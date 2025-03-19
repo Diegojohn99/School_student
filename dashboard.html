@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Estudiantil</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body>
+    <button class="menu-hamburguesa btn btn-light shadow-sm">
+        <span class="material-icons">menu</span>
+    </button>
+
+    <div class="dashboard-container">
+        <!-- Barra Lateral -->
+        <aside class="sidebar bg-dark text-white vh-100 position-fixed" style="width: 250px;">
+            <div class="p-3">
+                <div class="user-info text-center mb-4">
+                    <h2 class="h5" id="student-name">Cargando...</h2>
+                    <p class="text-muted small" id="student-id"></p>
+                </div>
+                
+                <nav class="nav flex-column">
+                    <a href="dashboard.html" class="nav-link text-white d-flex align-items-center">
+                        <i class="bi bi-house-door me-2"></i>
+                        Inicio
+                    </a>
+                    <a href="cursos.html" class="nav-link text-white d-flex align-items-center">
+                        <i class="bi bi-book me-2"></i>
+                        Cursos
+                    </a>
+                    <a href="calificaciones.html" class="nav-link text-white d-flex align-items-center">
+                        <i class="bi bi-graph-up me-2"></i>
+                        Calificaciones
+                    </a>
+                    <a href="asistencia.html" class="nav-link text-white d-flex align-items-center">
+                        <i class="bi bi-calendar-check me-2"></i>
+                        Asistencia
+                    </a>
+                    <a href="tareas.html" class="nav-link text-white d-flex align-items-center">
+                        <i class="bi bi-files me-2"></i>
+                        Tareas
+                    </a>
+                </nav>
+                <!-- Botón para cerrar menú -->
+                <div class="cerrar-menu d-lg-none">
+                    <span class="material-icons text-white">close</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Contenido Principal -->
+        <main class="main-content">
+            <!-- Cabecera -->
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <h1>Bienvenido <span  id="student-name"></span></h1>
+                    <div class="quick-stats">
+                        <div class="stat-item">
+                            <span class="material-icons">today</span>
+                            <div>
+                                <h3>Próxima Clase</h3>
+                                <p id="next-class">Matemáticas - 08:00 AM</p>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="material-icons">task</span>
+                            <div>
+                                <h3>Tareas Pendientes</h3>
+                                <p id="pending-tasks">3</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="notifications">
+                    <span class="material-icons">notifications</span>
+                    <div class="notification-badge">2</div>
+                </div>
+            </header>
+
+            <!-- Sección Principal: Contenido Dinámico -->
+            <div class="dashboard-sections">
+                <!-- Sección Horario -->
+                <section class="card schedule">
+                    <div class="schedule-header">
+                        <h2><span class="material-icons">schedule</span> Horario Semanal</h2>
+                        <button id="saveScheduleBtn" class="btn-submit">
+                            <span class="material-icons">save</span> Guardar Cambios
+                        </button>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table id="schedule-table" class="editable-table">
+                            <thead>
+                                <tr>
+                                    <th>Hora</th>
+                                    <th>Lunes</th>
+                                    <th>Martes</th>
+                                    <th>Miércoles</th>
+                                    <th>Jueves</th>
+                                    <th>Viernes</th>
+                                </tr>
+                            </thead>
+                            <tbody id="schedule-body">
+                                <!-- Las filas se generarán dinámicamente mediante JavaScript -->
+                                <tr>
+                                    <td colspan="6" class="text-center">Cargando horario...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Sección Tareas -->
+                <section class="card tasks">
+                    <h2><span class="material-icons">assignment</span> Próximas Entregas</h2>
+                    <ul id="tasks-list" class="tasks-list">
+                        <!-- Contenido dinámico mediante JS -->
+                    </ul>
+                    <button onclick="openUploadModal()" class="btn-submit">
+                        <span class="material-icons">add</span> Nueva Entrega
+                    </button>
+                </section>
+
+                <!-- Sección Calificaciones -->
+                <section class="card grades">
+                    <h2><span class="material-icons">star</span> Últimas Calificaciones</h2>
+                    <table id="grades-table">
+                        <thead>
+                            <tr>
+                                <th>Materia</th>
+                                <th>Evaluación</th>
+                                <th>Calificación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Contenido dinámico mediante JS -->
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Sección Asistencia -->
+                <section class="card attendance">
+                    <h2><span class="material-icons">how_to_reg</span> Estado de Asistencia</h2>
+                    <div class="attendance-progress">
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%"></div>
+                        </div>
+                        <span>85% de asistencia este mes</span>
+                    </div>
+                    <button class="btn-justify"><span class="material-icons">description</span> Justificar Falta</button>
+                </section>
+            </div>
+        </main>
+
+        <!-- Modal: Fuera del flujo principal -->
+        <div id="uploadModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2><span class="material-icons">upload</span> Entregar Tarea</h2>
+                <form id="uploadForm">
+                    <div class="form-group">
+                        <label>Curso:</label>
+                        <select id="cursoSelect" required>
+                            <option value="">Selecciona un curso</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Título:</label>
+                        <input type="text" id="tituloTarea" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Descripción:</label>
+                        <textarea id="descripcionTarea" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Archivo (PDF):</label>
+                        <input type="file" id="archivoTarea" accept=".pdf" required>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">
+                        <span class="material-icons">cloud_upload</span> Subir Tarea
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/common.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

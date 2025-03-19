@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos - Colegio Manager</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body>
+    <button class="menu-hamburguesa btn btn-light shadow-sm">
+        <span class="material-icons">menu</span>
+    </button>
+
+
+    <div class="dashboard-container">
+        <!-- Barra Lateral -->
+        <div class="dashboard-container">
+            <!-- Barra Lateral -->
+            <aside class="sidebar bg-dark text-white vh-100 position-fixed" style="width: 250px;">
+                <div class="p-3">
+                    <div class="user-info text-center mb-4">
+                        <h2 class="h5" id="student-name">Cargando...</h2>
+                        <p class="text-muted small" id="student-id"></p>
+                    </div>
+                    
+                    <nav class="nav flex-column">
+                        <a href="dashboard.html" class="nav-link text-white d-flex align-items-center">
+                            <i class="bi bi-house-door me-2"></i>
+                            Inicio
+                        </a>
+                        <a href="cursos.html" class="nav-link text-white d-flex align-items-center">
+                            <i class="bi bi-book me-2"></i>
+                            Cursos
+                        </a>
+                        <a href="calificaciones.html" class="nav-link text-white d-flex align-items-center">
+                            <i class="bi bi-graph-up me-2"></i>
+                            Calificaciones
+                        </a>
+                        <a href="asistencia.html" class="nav-link text-white d-flex align-items-center">
+                            <i class="bi bi-calendar-check me-2"></i>
+                            Asistencia
+                        </a>
+                        <a href="tareas.html" class="nav-link text-white d-flex align-items-center">
+                            <i class="bi bi-files me-2"></i>
+                            Tareas
+                        </a>
+                    </nav>
+                    <!-- Botón para cerrar menú -->
+                    <div class="cerrar-menu d-lg-none">
+                        <span class="material-icons text-white">close</span>
+                    </div>
+                </div>
+            </aside>
+        
+        <!-- Contenido Principal -->
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Mis Cursos</h1>
+                <button class="btn-primary" id="btnMatricular">
+                    <span class="material-icons">add</span> Nuevo Curso
+                </button>
+
+                <a href="admin-cursos.html" class="btn-primary" id="btnAdminCursos">
+                    <span class="material-icons">settings</span> Administrar Cursos
+                </a>
+            </header>
+            
+            <div class="cursos-grid" id="cursosContainer"></div>
+        
+            <!-- Modal de Matriculación -->
+            <div id="matriculaModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h2><span class="material-icons">school</span> Matricular en Nuevo Curso</h2>
+                    <div class="modal-body">
+                        <div id="cargandoCursos" class="loading-spinner"></div>
+                        <form id="formMatricula">
+                            <div class="form-group">
+                                <label>Selecciona un curso:</label>
+                                <select id="listaCursos" class="form-control" required>
+                                    <option value="" disabled selected>Cursos disponibles</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn-submit">
+                                <span class="material-icons">how_to_reg</span> Matricularme
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Modal de Detalles del Curso -->
+            <div id="detalleCursoModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h2 id="modalTitulo"></h2>
+                    <div class="modal-body">
+                        <div class="detalle-curso">
+                            <p><span class="material-icons">person</span> Profesor: <span id="modalProfesor"></span></p>
+                            <p><span class="material-icons">schedule</span> Horario: <span id="modalHorario"></span></p>
+                            <p><span class="material-icons">description</span> Descripción: <span id="modalDescripcion"></span></p>
+                            <div class="estadisticas-curso">
+                                <h3>Estadísticas:</h3>
+                                <div class="estadisticas-grid">
+                                    <div class="estadistica-item">
+                                        <span class="material-icons">assignment</span>
+                                        <span>Tareas Pendientes: <span id="modalTareasPendientes">0</span></span>
+                                    </div>
+                                    <div class="estadistica-item">
+                                        <span class="material-icons">grade</span>
+                                        <span>Promedio Actual: <span id="modalPromedio">-</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/cursos.js?v=4"></script>
+    <script src="assets/js/common.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
