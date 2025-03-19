@@ -230,22 +230,6 @@ main{
     color: #3498db;
 }
 
-.notifications {
-    position: relative;
-    cursor: pointer;
-    margin-top: 20px;
-}
-
-.notification-badge {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background: #e74c3c;
-    color: white;
-    border-radius: 50%;
-    padding: 3px 8px;
-    font-size: 0.8rem;
-}
 
 /* Secciones del dashboard */
 .dashboard-sections {
@@ -584,6 +568,113 @@ main{
         margin: 10px 0;
     }
 }
+
+/* Estilos para el banner de notificaciones */
+.notification-banner {
+    background-color: #f8f9fa;
+    border-left: 4px solid #007bff;
+    border-radius: 4px;
+    padding: 12px;
+    margin-bottom: 20px;
+    display: flex;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.notification-content span.material-icons {
+    color: #007bff;
+    margin-right: 12px;
+    font-size: 24px;
+}
+
+.notification-content p {
+    flex-grow: 1;
+    margin: 0;
+}
+
+/* Botones y acciones */
+.schedule-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Estilos para modal de exportación */
+.export-options {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.btn-option {
+    display: flex;
+    align-items: center;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 16px;
+    gap: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-option:hover {
+    background-color: #e9ecef;
+    border-color: #ced4da;
+}
+
+.btn-option .material-icons {
+    font-size: 24px;
+    color: #495057;
+}
+
+#export-to-google {
+    border-left: 4px solid #db4437;
+}
+
+#export-to-pdf {
+    border-left: 4px solid #4285f4;
+}
+
+/* Media queries para responsive */
+@media (max-width: 768px) {
+    .notification-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .notification-content p {
+        margin: 8px 0;
+    }
+    
+    .schedule-actions {
+        flex-direction: column;
+    }
+}
+
 
 /* Ajustes específicos para el formulario de login */
 @media screen and (max-width: 850px){

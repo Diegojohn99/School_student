@@ -77,9 +77,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="notifications">
-                    <span class="material-icons">notifications</span>
-                    <div class="notification-badge">2</div>
+                <div id="enable-notifications" style="display: none;" class="notification-banner">
+                    <div class="notification-content">
+                        <span class="material-icons">notifications</span>
+                        <p>Recibe recordatorios de tus clases 15 minutos antes</p>
+                        <button id="enable-notifications-btn" class="btn btn-primary">Activar notificaciones</button>
+                    </div>
                 </div>
             </header>
 
@@ -89,9 +92,14 @@
                 <section class="card schedule">
                     <div class="schedule-header">
                         <h2><span class="material-icons">schedule</span> Horario Semanal</h2>
-                        <button id="saveScheduleBtn" class="btn-submit">
-                            <span class="material-icons">save</span> Guardar Cambios
-                        </button>
+                        <div class="schedule-actions">
+                            <button id="export-schedule-btn" class="btn-secondary">
+                                <span class="material-icons">calendar_today</span> Exportar/Imprimir
+                            </button>
+                            <button id="saveScheduleBtn" class="btn-submit">
+                                <span class="material-icons">save</span> Guardar Cambios
+                            </button>
+                        </div>
                     </div>
                     
                     <div class="table-responsive">
@@ -194,9 +202,29 @@
         </div>
     </div>
 
+    <!-- Modal para opciones de exportación -->
+<div id="exportModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2><span class="material-icons">share</span> Exportar Horario</h2>
+        <div class="export-options">
+            <button id="export-to-google" class="btn-option">
+                <span class="material-icons">event</span>
+                Añadir a Google Calendar
+            </button>
+            <button id="export-to-pdf" class="btn-option">
+                <span class="material-icons">picture_as_pdf</span>
+                Guardar como PDF
+            </button>
+        </div>
+    </div>
+</div>
+
     <script src="assets/js/dashboard.js"></script>
     <script src="assets/js/common.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+
